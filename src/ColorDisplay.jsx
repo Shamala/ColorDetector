@@ -1,5 +1,6 @@
 const ColorDisplay = ({ colorValue = "Empty Value", hexValue, isDark }) => {
   console.log(`Is Dark-${isDark}`);
+  const isUnknownColor = colorValue && !hexValue;
   return (
     <div
       className="colorDisplayTile"
@@ -8,8 +9,8 @@ const ColorDisplay = ({ colorValue = "Empty Value", hexValue, isDark }) => {
         color: isDark ? "#fff" : "#000",
       }}
     >
-      <p>{colorValue ? colorValue : "Empty Value"}</p>
-      <p>{hexValue ? hexValue : null}</p>
+      <p>{isUnknownColor ? "No Such Color" : colorValue || "Empty Value"}</p>
+      <p>{isUnknownColor ? colorValue : hexValue ? hexValue : null}</p>
     </div>
   );
 };
